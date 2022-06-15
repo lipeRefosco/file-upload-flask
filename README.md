@@ -32,8 +32,8 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 
 ### Server-Side
 - [ ] Configurar o apache
-- [ ] Definir uma rota pelo Flask que receba arquivos pelo metodo POST.
-- [ ] Salvar o arquivo no servidor em uma pasta padrão ("Default") do projeto.
+- [x] Definir uma rota pelo Flask que receba arquivos pelo metodo POST.
+- [x] Salvar o arquivo no servidor em uma pasta padrão ("Default") do projeto.
 - [ ] Salvar no Banco de Dados: **Horário**, **Nome e o "Relative Path" onde o arquivo for salvo**, e o **IP** do request.
 
 ## Opcional
