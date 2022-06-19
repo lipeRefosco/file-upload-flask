@@ -13,8 +13,8 @@ def main():
 
 def go_default_folder( user_folder : str, name_folder : str ):
 
-    if os.path.exists(user_folder + "/" + name_folder):
-        os.chdir(user_folder + "/" + name_folder)
+    if os.path.exists(user_folder + os.path.sep + name_folder):
+        os.chdir(user_folder + os.path.sep + name_folder)
 
     else:
         os.chdir(user_folder)
