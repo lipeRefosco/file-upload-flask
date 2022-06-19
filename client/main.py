@@ -15,7 +15,7 @@ def go_default_folder( user_folder : str, name_folder : str ):
 
     if os.path.exists(user_folder + os.path.sep + name_folder):
         os.chdir(user_folder + os.path.sep + name_folder)
-
+        return
     else:
         os.chdir(user_folder)
         os.mkdir(name_folder)
