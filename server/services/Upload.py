@@ -52,7 +52,28 @@ class Upload:
         
         os.remove( data["filename"] )
 
-        return "Happy path!"
+        # Start a connection with DB
+        os.chdir('../')
+        if not os.path.exists( 'database' ):
+            os.mkdir( 'database' )
+        os.chdir( 'database' )
+
+        # Start a connection with DB
+        con = sqlite3.connect("uploads.db")
+        cur = con.cursor()
+        # Create table
+        cur.execute('CREATE TABLE IF NOT EXISTS uploads (ip, file, date);')
+        
+        # Insert itch file on DB
+        for file in data["files"]:
+            cur.execute(f"INSERT INTO uploads (ip, file, date) VALUES ('{data['ip']}', '{file}', '{data['date']} {data['hour']}');")
+
+        cur.execute("SELECT * FROM uploads")
+
+        for db_data in cur.fetchall():
+            print(db_data)
+        
+        return "Happy path"
     
     def allowed_file(filename: str, allowed_extensions: str):
         return '.' in filename and \
@@ -64,7 +85,7 @@ class Upload:
     
     def get_hours(filename : str):
         infos = filename.split("_-_")
-        hours_formated = infos[2].replace("-", ":")
+        hours_formated = infos[2].replace("-", ":").replace(".zip", "")
         return hours_formated
 
     def unzip_file(folder : str, target : str):
