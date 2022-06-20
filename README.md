@@ -27,7 +27,8 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 - [x] Definir uma pasta especifica para varrer os arquivos.
 - [x] Zippar todos os arquivos da pasta definida.
 - [x] Deletar os arquivos originais.
-- [ ] Enviar o arquivo para o endereço https://albert.raioss.rocks pelo metodo POST.
+- [x] Enviar o arquivo para o server pelo metodo POST.
+- [ ] Compilar com o endereço do servidor correto.
 
 ### Server-Side
 - [ ] Configurar o apache

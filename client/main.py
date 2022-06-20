@@ -1,23 +1,28 @@
 
-from array import array
-import datetime
 import os
+import datetime
+from importlib_metadata import files
+import requests
 from zipfile import ZipFile
 
 date = datetime.datetime.now()
 date_format = str(date.year) + '-' + str(date.month) + '-' + str(date.day)
-hour_format = str(date.hour) + ':' + str(date.minute) + ':' + str(date.second)
+hour_format = str(date.hour) + '-' + str(date.minute) + '-' + str(date.second)
 
 DEFAULT_USER_DIRECTORY = os.path.expanduser("~")
 DEFAULT_DIRECTORY_NAME = "raioss"
-DEFAULT_DIRECTORY      = DEFAULT_USER_DIRECTORY + DEFAULT_DIRECTORY_NAME
-DEFAULT_ZIP_NAME    = f"{DEFAULT_DIRECTORY_NAME}_-_{date_format}_{hour_format}.zip"
+DEFAULT_DIRECTORY      = DEFAULT_USER_DIRECTORY + os.path.sep + DEFAULT_DIRECTORY_NAME
+DEFAULT_ZIP_NAME       = f"{DEFAULT_DIRECTORY_NAME}_-_{date_format}_-_{hour_format}.zip"
+DEFAULT_URL         = "http://127.0.0.1:5000/upload"
+
 
 def main():
 
     go_default_directory(DEFAULT_USER_DIRECTORY, DEFAULT_DIRECTORY_NAME)
-    
+
     zip_all_files(DEFAULT_ZIP_NAME)
+
+    send_files(DEFAULT_URL, DEFAULT_DIRECTORY + os.path.sep + DEFAULT_ZIP_NAME)
 
     return
 
@@ -57,15 +62,23 @@ def zip_all_files(output_name : str, directory : str = "."):
 
     return
 
-def remove_all_original_files(list_files = array):
+def remove_all_original_files(list_files : list):
+    print('Removing original files...')
     for file in list_files:
 
         # Remove directory
         if os.path.isdir(file):
             continue
-
+        print(f"Removing file \"{file}\"")
         os.remove(file)
 
+    return
+
+def send_files(url : str, file_path : str):
+
+    all_files = {'file' : open(file_path, 'rb')}
+    res = requests.post(url, files=all_files)
+    print(res.text)
     return
 
 if __name__ == "__main__":
