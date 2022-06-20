@@ -1,4 +1,5 @@
 
+from array import array
 import datetime
 import os
 from zipfile import ZipFile
@@ -51,7 +52,20 @@ def zip_all_files(output_name : str, directory : str = "."):
             zip.write(file)
         
         print('Zip file created!')
-        
+    
+    remove_all_original_files(files)
+
+    return
+
+def remove_all_original_files(list_files = array):
+    for file in list_files:
+
+        # Remove directory
+        if os.path.isdir(file):
+            continue
+
+        os.remove(file)
+
     return
 
 if __name__ == "__main__":
