@@ -28,7 +28,6 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 - [x] Zippar todos os arquivos da pasta definida.
 - [x] Deletar os arquivos originais.
 - [ ] Enviar o arquivo para o endereço https://albert.raioss.rocks pelo metodo POST.
-- [ ] "Triggar" quando algum arquivo for modificado/adicionado.
 
 ### Server-Side
 - [ ] Configurar o apache
@@ -39,4 +38,4 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 ## Opcional
 - [ ] Interface gráfica
 - [ ] Configuraçao de usuários
-- [ ] 
+- [ ] "Triggar" quando algum arquivo for modificado/adicionado.
