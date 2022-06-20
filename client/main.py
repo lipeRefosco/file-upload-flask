@@ -1,29 +1,41 @@
-
 import os
 import datetime
-from importlib_metadata import files
+from time import sleep
 import requests
 from zipfile import ZipFile
-
-date = datetime.datetime.now()
-date_format = str(date.year) + '-' + str(date.month) + '-' + str(date.day)
-hour_format = str(date.hour) + '-' + str(date.minute) + '-' + str(date.second)
 
 DEFAULT_USER_DIRECTORY = os.path.expanduser("~")
 DEFAULT_DIRECTORY_NAME = "raioss"
 DEFAULT_DIRECTORY      = DEFAULT_USER_DIRECTORY + os.path.sep + DEFAULT_DIRECTORY_NAME
-DEFAULT_ZIP_NAME       = f"{DEFAULT_DIRECTORY_NAME}_-_{date_format}_-_{hour_format}.zip"
-DEFAULT_URL         = "http://127.0.0.1:5000/upload"
+DEFAULT_URL            = "http://127.0.0.1:5000/upload"
 
 
 def main():
 
     go_default_directory(DEFAULT_USER_DIRECTORY, DEFAULT_DIRECTORY_NAME)
 
-    zip_all_files(DEFAULT_ZIP_NAME)
+    while True:
 
-    send_files(DEFAULT_URL, DEFAULT_DIRECTORY + os.path.sep + DEFAULT_ZIP_NAME)
+        if have_new_file():
 
+            # Start date time
+            date = datetime.datetime.now()
+            date_format = str(date.year) + '-' + str(date.month) + '-' + str(date.day)
+            hour_format = str(date.hour) + '-' + str(date.minute) + '-' + str(date.second)
+            
+            default_zip_name = f"{DEFAULT_DIRECTORY_NAME}_-_{date_format}_-_{hour_format}.zip"
+            file_list = os.listdir()
+
+            print("\n\n\n", file_list)
+            zip_all_files(file_list, default_zip_name)
+            send_files(DEFAULT_URL, DEFAULT_DIRECTORY + os.path.sep + default_zip_name)
+            remove_all_original_files(file_list, default_zip_name)
+        
+        else:
+            print(f"Monitoring the directory {DEFAULT_DIRECTORY}")
+        
+        sleep(2)
+    
     return
 
 def go_default_directory( user_directory : str, name_directory : str ):
@@ -36,20 +48,17 @@ def go_default_directory( user_directory : str, name_directory : str ):
         os.mkdir(name_directory)
         go_default_directory(user_directory, name_directory)
 
-def zip_all_files(output_name : str, directory : str = "."):
+def zip_all_files(list_files : list, output_name : str, directory : str = "."):
     # Zip all files from directory.
-
-    # List of files
-    files = os.listdir()
 
     # Create a zip file
     with ZipFile(f"{directory}{os.path.sep}{output_name}", 'w') as zip:
         
         print(f"Creating zip file \"{output_name}\"!")
 
-        for file in files:
-            # Escape zip file or directory
-            if '.zip' in file or os.path.isdir(file):
+        for file in list_files:
+            # Escape directory
+            if os.path.isdir(file):
                 continue
             
             print(f"Zipping file \"{file}\"")
@@ -58,14 +67,14 @@ def zip_all_files(output_name : str, directory : str = "."):
         
         print('Zip file created!')
     
-    remove_all_original_files(files)
-
     return
 
-def remove_all_original_files(list_files : list):
-    print('Removing original files...')
-    for file in list_files:
+def remove_all_original_files(list_files : list, default_zip_name : str):
+    print('Removing all files...')
 
+    list_files.append(default_zip_name)
+
+    for file in list_files:
         # Remove directory
         if os.path.isdir(file):
             continue
@@ -80,6 +89,10 @@ def send_files(url : str, file_path : str):
     res = requests.post(url, files=all_files)
     print(res.text)
     return
+
+def have_new_file():
+    actual_files = os.listdir()
+    return True if len(actual_files) != 0 else False
 
 if __name__ == "__main__":
     main()
