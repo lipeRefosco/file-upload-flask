@@ -25,8 +25,8 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 ## Tarefas
 ### Client-Side
 - [x] Definir uma pasta especifica para varrer os arquivos.
-- [ ] Zippar todos os arquivos da pasta definida.
-- [ ] Deletar os arquivos originais.
+- [x] Zippar todos os arquivos da pasta definida.
+- [x] Deletar os arquivos originais.
 - [ ] Enviar o arquivo para o endereço https://albert.raioss.rocks pelo metodo POST.
 - [ ] "Triggar" quando algum arquivo for modificado/adicionado.
 
