@@ -5,7 +5,9 @@ import services
 app = Flask(__name__)
 
 app.config['ALLOWED_EXTENSIONS'] = {"zip"}
-app.config['UPLOAD_FOLDER'] = "./uploads"
+app.config['UPLOAD_FOLDER']      = "uploads"
+app.config['DB_FOLDER']          = "database"
+app.config['DB_FILE']            = "uploads.db"
 
 @app.route("/", methods=["GET"])
 def index():
@@ -18,6 +20,10 @@ def upload():
 @app.route("/ip", methods=["GET"])
 def ip():
     return services.Ip.run(request)
+
+@app.route("/datas", methods=["GET"])
+def datas():
+    return services.Datas.run(request, app)
 
 if __name__ == "__main__":
     app.run()
