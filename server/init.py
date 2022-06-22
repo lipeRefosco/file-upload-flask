@@ -15,5 +15,9 @@ def index():
 def upload():
     return services.Upload.run(request, app)
 
+@app.route("/ip", methods=["GET"])
+def ip():
+    return services.Ip.run(request)
+
 if __name__ == "__main__":
     app.run()
