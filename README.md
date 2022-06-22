@@ -36,7 +36,7 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 - [x] Definir uma rota pelo Flask que receba arquivos pelo metodo POST.
 - [x] Salvar o arquivo no servidor em uma pasta padrão ("Default") do projeto.
 - [x] Salvar no Banco de Dados: **Horário**, **Nome e o "Relative Path" onde o arquivo for salvo**, e o **IP** do request.
-- [ ] Ajustar CORS
+- [x] Ajustar CORS
 
 ## Opcional
 - [ ] Interface gráfica
