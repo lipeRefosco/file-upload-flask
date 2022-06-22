@@ -1,8 +1,9 @@
-import os
 from flask import Flask, request
+from flask_cors import CORS
 import services
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['ALLOWED_EXTENSIONS'] = {"zip"}
 app.config['UPLOAD_FOLDER']      = "uploads"
