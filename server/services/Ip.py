@@ -1,5 +1,5 @@
-from flask import Request
+from flask import Request, jsonify
 
 class Ip:
     def run(request : Request):
-        return f"Seu ip é {request.remote_addr}"
+        return jsonify(f"Seu ip é {request.remote_addr}")
