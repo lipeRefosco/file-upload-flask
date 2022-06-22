@@ -2,7 +2,8 @@
 
 echo "Installing apache2"
 apt install apache2
-
+apt install libapache2-mod-wsgi-py3
+apt install -y apparmor apturl 
 echo ""
 echo ""
 echo "Installing python3 python3-pip"
@@ -33,5 +34,5 @@ service apache2 reload
 echo ""
 echo ""
 echo "Removing applications files" 
-cd ../
-rm -r exame_-_admissional_-_raioss.com/
+#cd ../
+#rm -r exame_-_admissional_-_raioss.com/

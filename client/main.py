@@ -7,7 +7,7 @@ from zipfile import ZipFile
 DEFAULT_USER_DIRECTORY = os.path.expanduser("~")
 DEFAULT_DIRECTORY_NAME = "raioss"
 DEFAULT_DIRECTORY      = DEFAULT_USER_DIRECTORY + os.path.sep + DEFAULT_DIRECTORY_NAME
-DEFAULT_URL            = "http://191.252.113.94/upload"
+DEFAULT_URL            = "http://louis.raioss.rocks/upload"
 
 
 def main():
@@ -31,6 +31,8 @@ def main():
             send_files(DEFAULT_URL, DEFAULT_DIRECTORY + os.path.sep + default_zip_name)
             remove_all_original_files(file_list, default_zip_name)
         
+            sleep(2)
+
         else:
             print(f"Monitoring the directory {DEFAULT_DIRECTORY}")
         
