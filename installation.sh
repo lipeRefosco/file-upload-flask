@@ -16,11 +16,13 @@ pip install Flask
 echo ""
 echo ""
 echo "Coping 'server' folder into /var/www/html"
+rm -r /var/www/html/server/
 cp -rfv ./server /var/www/html
 
 echo ""
 echo ""
 echo "Coping file '000-default.config' into /etc/apache2/sites-available/" 
+rm /etc/apache2/sites-available/000-default.config
 cp ./infra/000-default.conf /etc/apache2/sites-available/
 
 echo ""
