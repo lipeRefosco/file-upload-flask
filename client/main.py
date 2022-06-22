@@ -7,7 +7,7 @@ from zipfile import ZipFile
 DEFAULT_USER_DIRECTORY = os.path.expanduser("~")
 DEFAULT_DIRECTORY_NAME = "raioss"
 DEFAULT_DIRECTORY      = DEFAULT_USER_DIRECTORY + os.path.sep + DEFAULT_DIRECTORY_NAME
-DEFAULT_URL            = "http://127.0.0.1:5000/upload"
+DEFAULT_URL            = "http://191.252.113.94/upload"
 
 
 def main():
