@@ -19,7 +19,11 @@ echo ""
 echo "Coping 'server' folder into /var/www/html"
 rm -r /var/www/html/server/
 cp -rfv ./server /var/www/html
-mkdir /var/www/html/server/uploads /var/www/html/server/database
+
+echo ""
+echo ""
+echo "Giving apache permition to write on /var/www/html"
+chown -R www-data:www-data /var/www/html/
 
 echo ""
 echo ""
