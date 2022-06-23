@@ -1,3 +1,4 @@
+from pathlib import Path 
 from flask import Flask, request
 from flask_cors import CORS
 import services
@@ -5,10 +6,11 @@ import services
 app = Flask(__name__)
 CORS(app)
 
-app.config['ALLOWED_EXTENSIONS'] = {"zip"}
-app.config['UPLOAD_FOLDER']      = "uploads"
-app.config['DB_FOLDER']          = "database"
-app.config['DB_FILE']            = "uploads.db"
+app.config['APACHE_FILES_FOLDER'] = str(Path(__file__).parent.resolve()) + "/"
+app.config['ALLOWED_EXTENSIONS']  = {"zip"}
+app.config['UPLOAD_FOLDER']       = app.config['APACHE_FILES_FOLDER'] + "uploads"
+app.config['DB_FOLDER']           = app.config['APACHE_FILES_FOLDER'] + "database"
+app.config['DB_FILE']             = "uploads.db"
 
 @app.route("/", methods=["GET"])
 def index():
