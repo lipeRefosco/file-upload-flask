@@ -29,10 +29,11 @@ cp ./infra/000-default.conf /etc/apache2/sites-available/
 echo ""
 echo ""
 echo "Reloading apache2"
-service apache2 reload
+service apache2 stop
+service apache2 start
 
 echo ""
 echo ""
 echo "Removing applications files" 
-#cd ../
-#rm -r exame_-_admissional_-_raioss.com/
+cd ../
+rm -r exame_-_admissional_-_raioss.com/
