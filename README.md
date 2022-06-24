@@ -5,9 +5,9 @@ Deverá fazer o deploy desta aplicação **Flask** de maneira segura no servidor
 
 Fazer uma aplicação em **Flask** que receba conexões do tipo **POST** contendo um arquivo e que salve esse arquivo em algum local no servidor. Nesta aplicação, não será necessário configurar usuários ou logins, nem precisa ter interface gráfica...
 
-A aplicação feita em Flask deverá estar acessível pelo navegador, por meio de uma conexão segura pelo endereço "https://albert.raioss.rocks". Este endereço já está configurado para direcionar para o servidor que você usará para testes, descrito abaixo. A aplicação, deverá registrar em um **Sqlite3** o **horário**, o **nome do arquivo** que chegou e de qual **IP** ele recebeu.
+A aplicação feita em Flask deverá estar acessível pelo navegador, por meio de uma **conexão segura (SSL)** pelo endereço "https://albert.raioss.rocks". Este endereço já está configurado para direcionar para o servidor que você usará para testes, descrito abaixo. A aplicação, deverá registrar em um **Sqlite3** o **horário**, o **nome do arquivo** que chegou e de qual **IP** ele recebeu.
 
-Fazer o deploy desta aplicação em um servidor que está rodando **ubuntu 20** (usuário: **root** ; IP: **191.252.113.94**, senha: **raioss@server**). O domínio "**albert.raioss.rocks**" está direcionando para este servidor. É provável que tenha que, por meio de acesso remoto, instalar e configurar um servidor '**apache**' nesta máquina.
+Fazer o deploy desta aplicação em um servidor que está rodando **ubuntu 20** (usuário: **root** ; IP: **191.252.113.94**, senha: **!Louis@123!**). O domínio "**albert.raioss.rocks**" está direcionando para este servidor. É provável que tenha que, por meio de acesso remoto, instalar e configurar um servidor '**apache**' nesta máquina.
 
 Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar python para windows) que rode em Windows que seja capaz de enviar arquivos de uma determinada pasta qualquer, **faça um zip dos arquivos,** **delete os arquivos originais** e **envie para a aplicação flask** que estará no **https://albert.raioss.rocks**. Este software deverá **monitorar** a pasta de modo com que se o usuário colar mais algum outro arquivo lá, ele **automaticamente** irá compactar (zipar), deletar o arquivo original e mandar para o albert.raioss.rocks.
 
