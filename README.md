@@ -7,7 +7,7 @@ Fazer uma aplicação em **Flask** que receba conexões do tipo **POST** contend
 
 A aplicação feita em Flask deverá estar acessível pelo navegador, por meio de uma conexão segura pelo endereço "https://albert.raioss.rocks". Este endereço já está configurado para direcionar para o servidor que você usará para testes, descrito abaixo. A aplicação, deverá registrar em um **Sqlite3** o **horário**, o **nome do arquivo** que chegou e de qual **IP** ele recebeu.
 
-Fazer o deploy desta aplicação em um servidor que está rodando **ubuntu 20** (usuário: **root** ; IP: **191.252.177.157**, senha: **raioss@server**). O domínio "**albert.raioss.rocks**" está direcionando para este servidor. É provável que tenha que, por meio de acesso remoto, instalar e configurar um servidor '**apache**' nesta máquina.
+Fazer o deploy desta aplicação em um servidor que está rodando **ubuntu 20** (usuário: **root** ; IP: **191.252.113.94**, senha: **raioss@server**). O domínio "**albert.raioss.rocks**" está direcionando para este servidor. É provável que tenha que, por meio de acesso remoto, instalar e configurar um servidor '**apache**' nesta máquina.
 
 Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar python para windows) que rode em Windows que seja capaz de enviar arquivos de uma determinada pasta qualquer, **faça um zip dos arquivos,** **delete os arquivos originais** e **envie para a aplicação flask** que estará no **https://albert.raioss.rocks**. Este software deverá **monitorar** a pasta de modo com que se o usuário colar mais algum outro arquivo lá, ele **automaticamente** irá compactar (zipar), deletar o arquivo original e mandar para o albert.raioss.rocks.
 
@@ -29,7 +29,7 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 - [x] Deletar os arquivos originais.
 - [x] Enviar o arquivo para o server pelo metodo POST.
 - [x] "Triggar" quando algum arquivo for modificado/adicionado.
-- [ ] Compilar com o endereço do servidor correto.
+- [x] Compilar com o endereço do servidor correto.
 
 ### Server-Side
 - [x] Configurar o apache
@@ -37,6 +37,7 @@ Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar p
 - [x] Salvar o arquivo no servidor em uma pasta padrão ("Default") do projeto.
 - [x] Salvar no Banco de Dados: **Horário**, **Nome e o "Relative Path" onde o arquivo for salvo**, e o **IP** do request.
 - [x] Ajustar CORS
+- [x] Configurar Certificado SSL
 
 ## Opcional
 - [ ] Interface gráfica
