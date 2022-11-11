@@ -2,3 +2,7 @@ __pycache__
 venv
 uploads/*
 database/*
+lib/
+lib64*
+bin/
+include/
