@@ -1,18 +1,9 @@
-# Teste admissional Raioss.com
-A meta sua para o mês de testes, basicamente é fazer um script local em python que você deverá compilar para **.exe**, que deverá enviar arquivos para uma outra aplicação em flask, a ser desenvolvida por você também.
+# File Upload
+O projeto consiste em criar um client compilado em Python para windows. Este client pega todos os arquivos de alguma pasta específica, compacta para a o arquivo e envia para um servidor por https.
 
-Deverá fazer o deploy desta aplicação **Flask** de maneira segura no servidor. Basicamente, um programa a ser rodado no computador local, que envia arquivos para um serviço em **Flask** rodando em nuvem. 
-
-Fazer uma aplicação em **Flask** que receba conexões do tipo **POST** contendo um arquivo e que salve esse arquivo em algum local no servidor. Nesta aplicação, não será necessário configurar usuários ou logins, nem precisa ter interface gráfica...
-
-A aplicação feita em Flask deverá estar acessível pelo navegador, por meio de uma **conexão segura (SSL)** pelo endereço "https://albert.raioss.rocks". Este endereço já está configurado para direcionar para o servidor que você usará para testes, descrito abaixo. A aplicação, deverá registrar em um **Sqlite3** o **horário**, o **nome do arquivo** que chegou e de qual **IP** ele recebeu.
-
-Fazer o deploy desta aplicação em um servidor que está rodando **ubuntu 20** (usuário: **root** ; IP: **191.252.113.94**, senha: **!Louis@123!**). O domínio "**albert.raioss.rocks**" está direcionando para este servidor. É provável que tenha que, por meio de acesso remoto, instalar e configurar um servidor '**apache**' nesta máquina.
-
-Fazer um software executável (sugiro utilizar o **PyInstaller** para compilar python para windows) que rode em Windows que seja capaz de enviar arquivos de uma determinada pasta qualquer, **faça um zip dos arquivos,** **delete os arquivos originais** e **envie para a aplicação flask** que estará no **https://albert.raioss.rocks**. Este software deverá **monitorar** a pasta de modo com que se o usuário colar mais algum outro arquivo lá, ele **automaticamente** irá compactar (zipar), deletar o arquivo original e mandar para o albert.raioss.rocks.
+O servidor recebe o arquivo, descompacta na pasta *"default"* dos arquivos, exclui o arquivo zip, registra no banco de dados: **Horário**, o ***"Relative Path"*** do arquivo, o **IP** do request.
 
 ## Tecnologias
-
 ### Client-Side
 - Python
 - PyIntaller
