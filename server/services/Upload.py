@@ -22,17 +22,17 @@ class Upload:
 
         # Request file exception
         if not request.files:
-            return "Nenhum arquivo encontrado!"
+            return jsonify("Nenhum arquivo encontrado!")
 
         if 'file' not in request.files:
-            return "O arquivo é obrigatório!"
+            return jsonify("O arquivo é obrigatório!")
 
         # Handle file
         file = request.files['file']
 
         # Verify if is a allowed file
         if not Upload.allowed_file( file.filename, allowed_extensions ):
-            return "Arquivo não aceito!"
+            return jsonify("Arquivo não aceito!")
         
         # Define data to DB
         data = {
@@ -43,7 +43,7 @@ class Upload:
         try:
             file.save( upload_folder + os.path.sep + data["filename"] )
         except Exception as ex:
-            return f"Não foi possivel salvar o arquivo.{ex}"
+            return jsonify(f"Não foi possivel salvar o arquivo.{ex}")
         
         # More informations to DB
         data["date"]  = Upload.get_date(data["filename"])
@@ -63,7 +63,7 @@ class Upload:
         # Create table
         cur.execute('CREATE TABLE IF NOT EXISTS uploads (ip, file, date);')
         
-        # Insert itch file on DB
+        # Insert each file on DB
         for file in data["files"]:
             cur.execute(f"INSERT INTO uploads (ip, file, date) VALUES ('{data['ip']}', '{file}', '{data['date']} {data['hour']}');")
 
