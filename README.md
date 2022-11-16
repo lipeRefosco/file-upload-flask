@@ -42,7 +42,7 @@ Na pasta '/server', execute os seguintes comandos:
 
 Criar um virtual enviroment:
 ```bash
-$ python3 -m venv 
+$ python3 -m venv .
 ```
 
 Ativar o virtual enviroment:
