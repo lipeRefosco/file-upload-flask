@@ -33,3 +33,29 @@ O servidor recebe o arquivo, descompacta na pasta *"default"* dos arquivos, excl
 ## Opcional
 - [ ] Interface gráfica
 - [ ] Configuraçao de usuários
+
+
+## Como testar a aplicação
+
+### Aplicação do Servidor
+Na pasta '/server', execute os seguintes comandos:
+
+Criar um virtual enviroment:
+```bash
+$ python3 -m venv 
+```
+
+Ativar o virtual enviroment:
+```bash
+$ source /bin/activate
+```
+
+Instalar os requirements:
+```bash
+$(venv) python -m pip install -r requirements.txt
+```
+
+Rodar a aplicação:
+```bash
+$(venv) python3 -m flask -A src/init.py run
+```
